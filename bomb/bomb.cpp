@@ -11,8 +11,8 @@ void Bomb::respawn()
     position.x = GetRandomValue(50, GetScreenWidth() - 50);
     position.y = GetRandomValue(50, GetScreenHeight() - 50);
 
-    timer = 5.0f;
-    explosionTimer = 1.0f;
+    timer = 1.0f;
+    explosionTimer = 0.5f;
     exploding = false;
 }
 

@@ -3,9 +3,25 @@
 Game::Game()
     : player1(Vector2{100, 400}, RED) 
     // player2(Vector2{700, 400}, BLUE)
+    , state(GameState::MENU)
 {}
 
 void Game::update(){
+
+   if (state == GameState::MENU)
+    {
+        menu.update();
+
+        if (menu.shouldStartGame())
+        {
+            playerName = menu.getPlayerName();
+            state = GameState::PLAYING;
+        }
+
+        return;
+    }
+
+
     player1.update();
     // player2.update();
     bomb.update();
@@ -16,16 +32,16 @@ void Game::update(){
         {
             // player 1 foi atingido
         }
-
-        // if (bomb.hitPlayer(player2.getPosition(), player2.getRadius()))
-        // {
-        //     // player 2 foi atingido
-        // }
     }
 
 }
 
 void Game::draw(){
+
+    if(state == GameState::MENU){
+        menu.draw();
+        return;
+    }
   
     DrawGridBackGround();
 
