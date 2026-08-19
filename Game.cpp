@@ -32,6 +32,7 @@ void Game::update(){
         {
             // player 1 foi atingido
         }
+        safeArea.update();
     }
 
 }
@@ -47,6 +48,7 @@ void Game::draw(){
 
     bomb.draw();
     player1.draw();
+    safeArea.draw();
     // player2.draw();
     DrawText("Olha a Bomba", 300, 10, 30, RAYWHITE);
 }

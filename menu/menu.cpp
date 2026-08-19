@@ -54,7 +54,7 @@ void Menu::draw(){
     //label
     DrawText(title, GetScreenWidth( ) / 2 - titleWidth / 2, 100, titleSize, RED);
     
-    //campo
+    //campo1'
     DrawRectangleRec(inputBox, WHITE);
     DrawRectangleLinesEx(inputBox, 3, BLACK);
 

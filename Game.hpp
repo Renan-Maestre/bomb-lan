@@ -5,6 +5,7 @@
 #include "player/player.hpp"
 #include "bomb/bomb.hpp"
 #include "menu/menu.hpp"
+#include "safeArea/safeArea.hpp"
 #include <string>
 
 enum class GameState {
@@ -23,6 +24,7 @@ class Game {
         // Player player2;
         Menu menu;
         GameState state;
+        SafeArea safeArea;
         std::string playerName;
 
         void DrawGridBackGround();

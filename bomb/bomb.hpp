@@ -11,6 +11,7 @@ class Bomb {
 
         bool isExploding() const;
 
+
     bool hitPlayer(
         Vector2 playerPosition,
         float playerRadius
