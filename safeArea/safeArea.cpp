@@ -3,15 +3,13 @@
 SafeArea::SafeArea(){
     safeArea.x = 0;
     safeArea.y = 0;
-    safeArea.width = GetScreenWidth() - 10;
-    safeArea.height = GetScreenHeight() -10;
+    safeArea.width = GetScreenWidth();
+    safeArea.height = GetScreenHeight();
 }
 
 void SafeArea::update(){
 
     float speed = 0.5f;
-
-   
     if (safeArea.width > 100 && safeArea.height > 100)
     {
         safeArea.x += speed;
@@ -21,11 +19,12 @@ void SafeArea::update(){
         safeArea.height -= speed * 2;
     }
 }
+
 void SafeArea::draw(){
-
-
+    
+    
     Color background = Color{158, 158, 158, 150};
-
+    
     // Cima
     DrawRectangle(
         0,
@@ -34,7 +33,7 @@ void SafeArea::draw(){
         safeArea.y,
         background
     );
-
+    
     // Baixo
     DrawRectangle(
         0,
@@ -43,7 +42,7 @@ void SafeArea::draw(){
         GetScreenHeight() - (safeArea.y + safeArea.height),
         background
     );
-
+    
     // Esquerda
     DrawRectangle(
         0,
@@ -52,7 +51,7 @@ void SafeArea::draw(){
         safeArea.height,
         background
     );
-
+    
     // Direita
     DrawRectangle(
         safeArea.x + safeArea.width,
@@ -61,4 +60,7 @@ void SafeArea::draw(){
         safeArea.height,
         background
     );
+}
+Vector4 SafeArea::getAreaLivre() const {
+    return {safeArea.x, safeArea.y, safeArea.width, safeArea.height};
 }

@@ -3,7 +3,9 @@
 Game::Game()
     : player1(Vector2{100, 400}, RED) 
     // player2(Vector2{700, 400}, BLUE)
-    , state(GameState::MENU)
+    , state(GameState::MENU),
+    safeArea(),
+    bomb(safeArea)
 {}
 
 void Game::update(){
@@ -24,7 +26,7 @@ void Game::update(){
 
     player1.update();
     // player2.update();
-    bomb.update();
+    bomb.update(safeArea);
 
    if (bomb.isExploding())
     {

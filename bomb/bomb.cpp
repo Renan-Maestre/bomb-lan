@@ -1,22 +1,31 @@
 #include "bomb.hpp"
 
-Bomb::Bomb()
+Bomb::Bomb(const SafeArea& safeArea)
 {
     explosionRadius = 100.0f;
-    respawn();
+
+    position = { 0, 0 };
+
+    timer = 0.0f;
+    explosionTimer = 0.0f;
+    exploding = false;
+    respawn(safeArea);
 }
 
-void Bomb::respawn()
+void Bomb::respawn(const SafeArea& safeArea)
 {
-    position.x = GetRandomValue(50, GetScreenWidth() - 50);
-    position.y = GetRandomValue(50, GetScreenHeight() - 50);
+    Vector4 area = safeArea.getAreaLivre();
+
+    position.x = GetRandomValue(area.x + 25, area.x + area.z - 25);
+    position.y = GetRandomValue(area.y + 25, area.y + area.w - 25);
+
 
     timer = 1.0f;
     explosionTimer = 0.5f;
     exploding = false;
 }
 
-void Bomb::update()
+void Bomb::update( const SafeArea& safeArea )
 {
     float dt = GetFrameTime();
 
@@ -36,7 +45,7 @@ void Bomb::update()
 
         if (explosionTimer <= 0.0f)
         {
-            respawn();
+            respawn(safeArea);
         }
     }
 }

@@ -8,6 +8,8 @@ class SafeArea {
 
         void update();
         void draw();
+
+        Vector4 getAreaLivre() const;
     private:
         Rectangle safeArea;
 };

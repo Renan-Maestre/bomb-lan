@@ -1,21 +1,20 @@
 #pragma once
 
 #include <raylib.h>
+#include "../safeArea/safeArea.hpp"
 
 class Bomb {
     public:
-        Bomb();
+        Bomb(const SafeArea& safeArea);
 
-        void update();
+        void update(const SafeArea& safeArea);
         void draw();
 
         bool isExploding() const;
-
-
-    bool hitPlayer(
-        Vector2 playerPosition,
-        float playerRadius
-    ) const;
+        bool hitPlayer(
+            Vector2 playerPosition,
+            float playerRadius
+        ) const;
 
     private: 
         Vector2 position;
@@ -23,5 +22,5 @@ class Bomb {
         float explosionTimer;
         float explosionRadius;
         bool exploding;
-        void respawn();
+        void respawn(const SafeArea& safeArea);
     };
